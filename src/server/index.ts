@@ -8,7 +8,7 @@ const {
   PORT,
   BASE_PATH
 } = process.env;
-const port = PORT || 3000;
+const port = PORT || 3003;
 
 export const initApp = async () => {
   // Register routes

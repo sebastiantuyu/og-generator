@@ -25,10 +25,18 @@ backgroundCtx.fillText("@sebastiantuyu", (1200 / 2) - ((backgroundMetrics.width 
 export const renderCanvas = async (
   width: number, height: number, titulo: string
 ) => {
-  const metrics = context.measureText(titulo);
+  let _ = titulo.split('\\n');
+
   context.drawImage(background  , 0, 0, width, height);
   context.drawImage(backgroundText, 0, 0, width, height);
-  context.fillText(titulo, (width / 2) - (metrics.width / 2), canvas.height/2 - 50);
+  _.forEach((v, i) => {
+    let _m = context.measureText(v)
+    context.fillText(
+      v,
+      (width / 2) - (_m.width / 2),
+      canvas.height/2 - 50 + (i * 55)
+    );
+  })
 
-  return  canvas.toBuffer("image/png");
+  return canvas.toBuffer("image/png");
 }
